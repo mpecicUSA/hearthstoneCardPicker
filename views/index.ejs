@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create a new card</title>
+    <style media="screen">
+      .container{
+        border: solid grey 1em;
+        margin: 1em;
+      }
+      *{
+        text-align:center
+      }
+    </style>
+    </head>
+  <body>
+    <h1>Welcome, create a new card here!</h1>
+    <form action="/cards" method="post">
+      <input type="number" name="mana" placeholder="mana">
+      <input type="number" name="attack" placeholder="attack">
+      <input type="number" name="health" placeholder="health">
+      <input type="text" name="description" placeholder="name/description">
+      <input type="submit">
+    </form>
+    <h1>Your current session</h1>
+    <% for(let i=0; i<deck.length;i++) { %>
+      <div class="container">
+        <h1>Description: <%= deck[i].description %> </h1>
+        <p>mana: <%= deck[i].mana %>  </p>
+        <p>health: <%= deck[i].health %>  </p>
+        <p>attack: <%= deck[i].attack %>  </p>
+        <a href="/cards/remove/<%= deck[i].id%>">Remove from your current session</a>
+      </div>
+    <% } %>
+    <h3>All your cards</h3>
+    <% for(let i=0; i<cards.length;i++) { %>
+      <div class="container">
+        <h1>Description: <%= cards[i].description %> </h1>
+        <p>mana: <%= cards[i].mana %>  </p>
+        <p>health: <%= cards[i].health %>  </p>
+        <p>attack: <%= cards[i].attack %>  </p>
+        <a href="/cards/add/<%= cards[i].id%>">Add to session </a>
+      </div>
+    <% } %>
+  </body>
+</html>
